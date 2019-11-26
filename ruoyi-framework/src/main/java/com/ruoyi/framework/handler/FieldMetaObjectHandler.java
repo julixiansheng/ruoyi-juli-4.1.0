@@ -1,6 +1,9 @@
 package com.ruoyi.framework.handler;
 
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.framework.util.ShiroUtils;
 import com.ruoyi.system.domain.SysUser;
 import org.apache.ibatis.reflection.MetaObject;
@@ -29,7 +32,8 @@ public class FieldMetaObjectHandler implements MetaObjectHandler {
             return;
         }
         SysUser user = ShiroUtils.getSysUser();
-        Date date = new Date();
+
+        Date date = DateUtils.getNowDate();
 
         //创建者
         setFieldValByName(CREATOR_BY, user.getUserId().toString(), metaObject);

@@ -1,5 +1,6 @@
 package ${packageName}.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ${packageName}.domain.${ClassName};
 import java.util.List;
 
@@ -9,9 +10,9 @@ import java.util.List;
  * @author ${author}
  * @date ${datetime}
  */
-public interface ${ClassName}Mapper 
+public interface ${ClassName}Mapper extends BaseMapper<${ClassName}>
 {
-    /**
+    #*/**
      * 查询${functionName}
      * 
      * @param ${pkColumn.javaField} ${functionName}ID
@@ -57,5 +58,5 @@ public interface ${ClassName}Mapper
      * @param ${pkColumn.javaField}s 需要删除的数据ID
      * @return 结果
      */
-    public int delete${ClassName}ByIds(String[] ${pkColumn.javaField}s);
+    public int delete${ClassName}ByIds(String[] ${pkColumn.javaField}s);*#
 }

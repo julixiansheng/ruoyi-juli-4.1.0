@@ -1,8 +1,9 @@
 package com.ruoyi.generator.domain;
 
-import javax.validation.constraints.NotBlank;
 import com.ruoyi.common.core.domain.BaseEntity;
 import com.ruoyi.common.utils.StringUtils;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * 代码生成业务字段表 gen_table_column
@@ -327,7 +328,7 @@ public class GenTableColumn extends BaseEntity
     {
         return StringUtils.equalsAnyIgnoreCase(javaField,
                 //BaseEntity
-                "createBy", "createTime", "updateBy", "updateTime", "remark",
+                "createBy", "createTime", "updateBy", "updateTime", "remark" , "deleted",
                 //TreeEntity
                 "parentName", "parentId", "orderNum", "ancestors");
     }

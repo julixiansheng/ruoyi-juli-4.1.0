@@ -1,26 +1,21 @@
 package com.ruoyi.moudels.test.service.impl;
 
-import java.util.Arrays;
-import java.util.List;
-
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.pagehelper.Constant;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.core.service.impl.BaseServiceImpl;
-import com.ruoyi.common.utils.DateUtils;
-import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.sql.SqlUtil;
 import com.ruoyi.framework.aspectj.DataScopeAspect;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.ruoyi.moudels.test.mapper.TrainingMapper;
 import com.ruoyi.moudels.test.domain.Training;
+import com.ruoyi.moudels.test.mapper.TrainingMapper;
 import com.ruoyi.moudels.test.service.ITrainingService;
-import com.ruoyi.common.core.text.Convert;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 训练Service业务层处理
@@ -46,6 +41,7 @@ public class TrainingServiceImpl extends BaseServiceImpl<TrainingMapper, Trainin
      * 查询训练列表
      *
      * @param training 训练
+     * @param page 分页
      * @return 训练
      */
     @Override
@@ -54,13 +50,16 @@ public class TrainingServiceImpl extends BaseServiceImpl<TrainingMapper, Trainin
         return getDataTable(iPage);
     }
 
+    /**
+     * 查询训练列表
+     *
+     * @param training 训练
+     * @return 训练
+     */
     @Override
     public List<Training> getTrainingList(Training training) {
         return baseMapper.selectList(getWrapper(training));
     }
-
-//todo    添加不需要分页的列表查询，用于列表导出使用 2019-11-26 00:07:14
-
 
     /**
      * 新增训练
@@ -112,8 +111,8 @@ public class TrainingServiceImpl extends BaseServiceImpl<TrainingMapper, Trainin
         //若查询条件来源于实体中的params，则需要手动补全查询条件
         String beginTrainingDate = (String) training.getParams().get("beginTrainingDate");
         String endTrainingDate = (String) training.getParams().get("endTrainingDate");
-        wrapper.ge(StringUtils.isNotBlank(beginTrainingDate), "training_date", beginTrainingDate);
-        wrapper.le(StringUtils.isNotBlank(endTrainingDate), "training_date", endTrainingDate);
+        wrapper.ge(StrUtil.isNotBlank(beginTrainingDate), "training_date", beginTrainingDate);
+        wrapper.le(StrUtil.isNotBlank(endTrainingDate), "training_date", endTrainingDate);
 
         //数据过滤
         Object scope = training.getParams().get(DataScopeAspect.DATA_SCOPE);

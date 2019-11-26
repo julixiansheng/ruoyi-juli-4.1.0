@@ -1,10 +1,10 @@
 package com.ruoyi.moudels.test.service;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.core.service.BaseService;
 import com.ruoyi.moudels.test.domain.Training;
+
 import java.util.List;
 
 /**
@@ -33,7 +33,7 @@ public interface ITrainingService extends BaseService<Training>
     public TableDataInfo getTrainingList(Training training, Page page);
 
     /**
-     * 查询训练列表 (导出用)
+     * 查询训练列表
      *
      * @param training  训练
      * @return  训练集合
