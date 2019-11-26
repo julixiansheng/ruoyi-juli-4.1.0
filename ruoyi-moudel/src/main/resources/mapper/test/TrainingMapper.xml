@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.moudels.test.mapper.TrainingMapper">
+    
+    <resultMap type="Training" id="TrainingResult">
+        <result property="id"    column="id"    />
+        <result property="trainingName"    column="training_name"    />
+        <result property="trainingNo"    column="training_no"    />
+        <result property="trainingType"    column="training_type"    />
+        <result property="trainingState"    column="training_state"    />
+        <result property="trainingDate"    column="training_date"    />
+        <result property="remark"    column="remark"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectTrainingVo">
+        select id, training_name, training_no, training_type, training_state, training_date, remark, create_by, create_time, update_by, update_time from tb_training
+    </sql>
+
+    <select id="selectTrainingList" parameterType="Training" resultMap="TrainingResult">
+        <include refid="selectTrainingVo"/>
+        <where>  
+            <if test="trainingName != null  and trainingName != ''"> and training_name like concat('%', #{trainingName}, '%')</if>
+            <if test="trainingNo != null  and trainingNo != ''"> and training_no = #{trainingNo}</if>
+            <if test="trainingType != null  and trainingType != ''"> and training_type = #{trainingType}</if>
+            <if test="trainingState != null  and trainingState != ''"> and training_state = #{trainingState}</if>
+            <if test="trainingDate != null "> and training_date = #{trainingDate}</if>
+        </where>
+    </select>
+    
+    <select id="selectTrainingById" parameterType="Long" resultMap="TrainingResult">
+        <include refid="selectTrainingVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTraining" parameterType="Training">
+        insert into tb_training
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">id,</if>
+            <if test="trainingName != null  and trainingName != ''">training_name,</if>
+            <if test="trainingNo != null  and trainingNo != ''">training_no,</if>
+            <if test="trainingType != null  and trainingType != ''">training_type,</if>
+            <if test="trainingState != null  and trainingState != ''">training_state,</if>
+            <if test="trainingDate != null ">training_date,</if>
+            <if test="remark != null  and remark != ''">remark,</if>
+            <if test="createBy != null  and createBy != ''">create_by,</if>
+            <if test="createTime != null ">create_time,</if>
+            <if test="updateBy != null  and updateBy != ''">update_by,</if>
+            <if test="updateTime != null ">update_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">#{id},</if>
+            <if test="trainingName != null  and trainingName != ''">#{trainingName},</if>
+            <if test="trainingNo != null  and trainingNo != ''">#{trainingNo},</if>
+            <if test="trainingType != null  and trainingType != ''">#{trainingType},</if>
+            <if test="trainingState != null  and trainingState != ''">#{trainingState},</if>
+            <if test="trainingDate != null ">#{trainingDate},</if>
+            <if test="remark != null  and remark != ''">#{remark},</if>
+            <if test="createBy != null  and createBy != ''">#{createBy},</if>
+            <if test="createTime != null ">#{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">#{updateBy},</if>
+            <if test="updateTime != null ">#{updateTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTraining" parameterType="Training">
+        update tb_training
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="trainingName != null  and trainingName != ''">training_name = #{trainingName},</if>
+            <if test="trainingNo != null  and trainingNo != ''">training_no = #{trainingNo},</if>
+            <if test="trainingType != null  and trainingType != ''">training_type = #{trainingType},</if>
+            <if test="trainingState != null  and trainingState != ''">training_state = #{trainingState},</if>
+            <if test="trainingDate != null ">training_date = #{trainingDate},</if>
+            <if test="remark != null  and remark != ''">remark = #{remark},</if>
+            <if test="createBy != null  and createBy != ''">create_by = #{createBy},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTrainingById" parameterType="Long">
+        delete from tb_training where id = #{id}
+    </delete>
+
+    <delete id="deleteTrainingByIds" parameterType="String">
+        delete from tb_training where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

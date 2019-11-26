@@ -15,7 +15,7 @@ import com.ruoyi.system.domain.SysUser;
 /**
  * shiro 工具类
  * 
- * @author ruoyi
+ * @author yuanxy
  */
 public class ShiroUtils
 {

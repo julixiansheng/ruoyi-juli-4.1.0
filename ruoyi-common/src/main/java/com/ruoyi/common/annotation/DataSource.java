@@ -11,7 +11,7 @@ import com.ruoyi.common.enums.DataSourceType;
 /**
  * 自定义多数据源切换注解
  * 
- * @author ruoyi
+ * @author yuanxy
  */
 @Target({ ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)

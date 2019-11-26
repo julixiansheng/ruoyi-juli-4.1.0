@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 表格分页数据对象
  * 
- * @author ruoyi
+ * @author yuanxy
  */
 public class TableDataInfo implements Serializable
 {
@@ -37,10 +37,24 @@ public class TableDataInfo implements Serializable
      * @param list 列表数据
      * @param total 总记录数
      */
-    public TableDataInfo(List<?> list, int total)
+    public TableDataInfo(List<?> list, long total)
     {
         this.rows = list;
         this.total = total;
+    }
+
+    /**
+     * 分页
+     *
+     * @param list 列表数据
+     * @param total 总记录数
+     * @param code 状态码
+     */
+    public TableDataInfo(List<?> list, long total, int code)
+    {
+        this.rows = list;
+        this.total = total;
+        this.code = code;
     }
 
     public long getTotal()

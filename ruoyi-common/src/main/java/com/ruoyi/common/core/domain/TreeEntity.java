@@ -3,7 +3,7 @@ package com.ruoyi.common.core.domain;
 /**
  * Tree基类
  * 
- * @author ruoyi
+ * @author yuanxy
  */
 public class TreeEntity extends BaseEntity
 {
