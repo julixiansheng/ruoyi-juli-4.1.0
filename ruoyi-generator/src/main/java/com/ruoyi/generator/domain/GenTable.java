@@ -1,11 +1,12 @@
 package com.ruoyi.generator.domain;
 
-import java.util.List;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import com.ruoyi.common.constant.GenConstants;
 import com.ruoyi.common.core.domain.BaseEntity;
 import com.ruoyi.common.utils.StringUtils;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 /**
  * 业务表 gen_table
@@ -255,14 +256,18 @@ public class GenTable extends BaseEntity
 
     public boolean isSuperColumn(String javaField)
     {
-        return isSuperColumn(this.tplCategory, javaField);
+        return StringUtils.equalsAnyIgnoreCase(javaField,
+                //BaseEntity
+                "createBy", "createTime", "updateBy", "updateTime", "remark" , "deleted",
+                //TreeEntity
+                "parentName", "parentId", "orderNum", "ancestors");
     }
 
     public static boolean isSuperColumn(String tplCategory, String javaField)
     {
         if (isTree(tplCategory))
         {
-            StringUtils.equalsAnyIgnoreCase(javaField, GenConstants.TREE_ENTITY);
+            return StringUtils.equalsAnyIgnoreCase(javaField, GenConstants.TREE_ENTITY);
         }
         return StringUtils.equalsAnyIgnoreCase(javaField, GenConstants.BASE_ENTITY);
     }

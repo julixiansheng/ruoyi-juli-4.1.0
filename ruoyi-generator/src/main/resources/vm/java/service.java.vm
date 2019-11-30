@@ -17,6 +17,7 @@ import com.ruoyi.common.core.domain.Ztree;
  */
 public interface I${ClassName}Service extends BaseService<${ClassName}>
 {
+
     /**
      * 查询${functionName}
      * 

@@ -51,7 +51,7 @@ public class ${ClassName}Controller extends BaseController
     @ResponseBody
     public List<${ClassName}> list(${ClassName} ${className})
     {
-        List<${ClassName}> list = ${className}Service.select${ClassName}List(${className});
+        List<${ClassName}> list = ${className}Service.get${ClassName}List(${className});
         return list;
     }
 #elseif($table.crud)
@@ -98,7 +98,7 @@ public class ${ClassName}Controller extends BaseController
     {
         if (StringUtils.isNotNull(${pkColumn.javaField}))
         {
-            mmap.put("${className}", ${className}Service.select${ClassName}ById(${pkColumn.javaField}));
+            mmap.put("${className}", ${className}Service.get${ClassName}ById(${pkColumn.javaField}));
         }
         return prefix + "/add";
     }
@@ -161,7 +161,9 @@ public class ${ClassName}Controller extends BaseController
     @ResponseBody
     public AjaxResult remove(@PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField})
     {
-        return toAjax(${className}Service.delete${ClassName}ById(${pkColumn.javaField}));
+        return toAjax(${className}Service.delete${ClassName}ByIds(new String[]{
+                String.valueOf(${pkColumn.javaField})
+        }));
     }
 #end
 #if($table.tree)
@@ -175,7 +177,7 @@ public class ${ClassName}Controller extends BaseController
     {
         if (StringUtils.isNotNull(${pkColumn.javaField}))
         {
-            mmap.put("${className}", ${className}Service.select${ClassName}ById(${pkColumn.javaField}));
+            mmap.put("${className}", ${className}Service.get${ClassName}ById(${pkColumn.javaField}));
         }
         return prefix + "/tree";
     }
@@ -187,7 +189,7 @@ public class ${ClassName}Controller extends BaseController
     @ResponseBody
     public List<Ztree> treeData()
     {
-        List<Ztree> ztrees = ${className}Service.select${ClassName}Tree();
+        List<Ztree> ztrees = ${className}Service.get${ClassName}Tree();
         return ztrees;
     }
 #end

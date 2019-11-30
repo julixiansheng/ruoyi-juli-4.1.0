@@ -45,9 +45,19 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
      * @return ${functionName}
      */
     @Override
-    public ${ClassName} select${ClassName}ById(${pkColumn.javaType} ${pkColumn.javaField})
+    public ${ClassName} get${ClassName}ById(${pkColumn.javaType} ${pkColumn.javaField})
     {
+#if($table.tree)
+#set($TreeCode=$treeCode.substring(0,1).toUpperCase() + ${treeCode.substring(1)})
+#set($TreeName=$treeName.substring(0,1).toUpperCase() + ${treeName.substring(1)})
+        ${ClassName} ${className} = baseMapper.selectById(${pkColumn.javaField});
+        ${ClassName} parent${ClassName} = baseMapper.selectById(${className}.get${TreeCode}());
+        ${className}.setParentName(parent${ClassName}.get${TreeName}());
+        return ${className};
+#end
+#if($table.crud)
         return baseMapper.selectById(${pkColumn.javaField});
+#end
     }
 
     /**
@@ -97,7 +107,7 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
     @Override
     public int update${ClassName}(${ClassName} ${className})
     {
-        return baseMapper.update(${className});
+        return baseMapper.updateById(${className});
     }
 
     /**
@@ -122,7 +132,7 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
     @Override
     public List<Ztree> select${ClassName}Tree()
     {
-        List<${ClassName}> ${className}List = ${className}Mapper.select${ClassName}List(new ${ClassName}());
+        List<${ClassName}> ${className}List = baseMapper.select${ClassName}List(new QueryWrapper<>());
         List<Ztree> ztrees = new ArrayList<Ztree>();
         for (${ClassName} ${className} : ${className}List)
         {
@@ -158,19 +168,19 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
 #set($AttrName=$column.javaField.substring(0,1).toUpperCase() + ${column.javaField.substring(1)})
 #if($column.query)
     #if($column.queryType == "EQ")
-        wrapper.eq(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.eq(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "NE")
-        wrapper.ne(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.ne(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "GT")
-        wrapper.gt(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.gt(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "GTE")
-        wrapper.ge(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.ge(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "LT")
-        wrapper.lt(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.lt(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "LTE")
-        wrapper.le(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.le(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "LIKE")
-        wrapper.like(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", SqlUtil.dealSpecialCharUseLike(${className}.get${AttrName}()));
+        wrapper.like(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", SqlUtil.dealSpecialCharUseLike(${className}.get${AttrName}()));
     #elseif($queryType == "BETWEEN")
 
         String begin${AttrName} = (String) ${className}.getParams().get("begin${AttrName}");
