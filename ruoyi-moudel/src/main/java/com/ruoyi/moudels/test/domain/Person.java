@@ -1,12 +1,15 @@
 package com.ruoyi.moudels.test.domain;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ruoyi.common.annotation.Excel;
+import com.ruoyi.common.core.domain.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.core.domain.BaseEntity;
+
 import java.util.Date;
 
 /**
@@ -47,4 +50,7 @@ public class Person extends BaseEntity
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date jobDate;
 
+    /** 所在部门*/
+    @TableField(fill = FieldFill.INSERT)
+    private Long deptId;
 }

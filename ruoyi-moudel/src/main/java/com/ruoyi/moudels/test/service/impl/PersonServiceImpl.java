@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ruoyi.common.annotation.DataScope;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.core.service.impl.BaseServiceImpl;
 import com.ruoyi.common.utils.sql.SqlUtil;
@@ -45,6 +46,7 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
      * @param page   分页
      * @return 人员
      */
+    @DataScope
     @Override
     public TableDataInfo getPersonList(Person person, Page page) {
         IPage iPage = baseMapper.selectPage(page, getWrapper(person));
@@ -57,6 +59,7 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
      * @param person 人员
      * @return 人员
      */
+    @DataScope
     @Override
     public List<Person> getPersonList(Person person) {
         return baseMapper.selectList(getWrapper(person));
@@ -106,15 +109,15 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
 
         QueryWrapper<Person> wrapper = new QueryWrapper<>();
 
-        wrapper.like(ObjectUtil.isNotNull(person.getName()), "name" , SqlUtil.dealSpecialCharUseLike(person.getName()));
+        wrapper.like(StrUtil.isNotBlank(person.getName()), "name" , SqlUtil.dealSpecialCharUseLike(person.getName()));
         wrapper.eq(ObjectUtil.isNotNull(person.getAge()), "age" , person.getAge());
         wrapper.eq(ObjectUtil.isNotNull(person.getSex()), "sex" , person.getSex());
         wrapper.eq(ObjectUtil.isNotNull(person.getJob()), "job" , person.getJob());
 
         String beginJobDate = (String) person.getParams().get("beginJobDate");
         String endJobDate = (String) person.getParams().get("endJobDate");
-        boolean condition = StrUtil.isNotBlank(beginJobDate) && StrUtil.isNotBlank(endJobDate);
-        wrapper.between(condition, "job_date" , beginJobDate, endJobDate);
+        wrapper.ge(StrUtil.isNotBlank(beginJobDate), "job_date", beginJobDate);
+        wrapper.le(StrUtil.isNotBlank(endJobDate), "job_date", endJobDate);
         //数据过滤
         Object scope = person.getParams().get(DataScopeAspect.DATA_SCOPE);
         if (ObjectUtil.isNotNull(scope)) {

@@ -74,6 +74,6 @@ public interface I${ClassName}Service extends BaseService<${ClassName}>
      * 
      * @return 所有${functionName}信息
      */
-    public List<Ztree> select${ClassName}Tree();
+    public List<Ztree> get${ClassName}Tree();
 #end
 }

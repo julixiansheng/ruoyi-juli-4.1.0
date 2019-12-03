@@ -130,9 +130,9 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
      * @return 所有${functionName}信息
      */
     @Override
-    public List<Ztree> select${ClassName}Tree()
+    public List<Ztree> get${ClassName}Tree()
     {
-        List<${ClassName}> ${className}List = baseMapper.select${ClassName}List(new QueryWrapper<>());
+        List<${ClassName}> ${className}List = baseMapper.selectList(new QueryWrapper<>());
         List<Ztree> ztrees = new ArrayList<Ztree>();
         for (${ClassName} ${className} : ${className}List)
         {
@@ -168,25 +168,25 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
 #set($AttrName=$column.javaField.substring(0,1).toUpperCase() + ${column.javaField.substring(1)})
 #if($column.query)
     #if($column.queryType == "EQ")
-        wrapper.eq(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.eq(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "NE")
-        wrapper.ne(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.ne(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "GT")
-        wrapper.gt(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.gt(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "GTE")
-        wrapper.ge(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.ge(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "LT")
-        wrapper.lt(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.lt(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "LTE")
-        wrapper.le(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
+        wrapper.le(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", ${className}.get${AttrName}());
     #elseif($queryType == "LIKE")
-        wrapper.like(ObjectUtil.isNotNull(${className}.get${AttrName}()), "${columnName}", SqlUtil.dealSpecialCharUseLike(${className}.get${AttrName}()));
+        wrapper.like(StrUtil.isNotBlank(${className}.get${AttrName}()), "${columnName}", SqlUtil.dealSpecialCharUseLike(${className}.get${AttrName}()));
     #elseif($queryType == "BETWEEN")
 
         String begin${AttrName} = (String) ${className}.getParams().get("begin${AttrName}");
         String end${AttrName} = (String) ${className}.getParams().get("end${AttrName}");
-        boolean condition = StrUtil.isNotBlank(begin${AttrName}) && StrUtil.isNotBlank(end${AttrName});
-        wrapper.between(condition, "${columnName}", begin${AttrName}, end${AttrName});
+        wrapper.ge(StrUtil.isNotBlank(begin${AttrName}), "${columnName}", begin${AttrName});
+        wrapper.le(StrUtil.isNotBlank(end${AttrName}), "${columnName}", end${AttrName});
     #end
 #end
 #end

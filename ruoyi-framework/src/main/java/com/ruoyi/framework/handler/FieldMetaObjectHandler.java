@@ -1,7 +1,5 @@
 package com.ruoyi.framework.handler;
 
-import cn.hutool.core.date.DateUnit;
-import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.framework.util.ShiroUtils;
@@ -24,6 +22,7 @@ public class FieldMetaObjectHandler implements MetaObjectHandler {
     private final static String CREATOR_BY = "createBy";
     private final static String UPDATE_TIME = "updateTime";
     private final static String UPDATE_BY = "updateBy";
+    private final static String DEPT_ID = "deptId";
 
     @Override
     public void insertFill(MetaObject metaObject) {
@@ -43,6 +42,8 @@ public class FieldMetaObjectHandler implements MetaObjectHandler {
         setFieldValByName(UPDATE_BY, user.getUserId().toString(), metaObject);
         //更新时间
         setFieldValByName(UPDATE_TIME, date, metaObject);
+        //创建人所在部门id
+        setFieldValByName(DEPT_ID, user.getDeptId(), metaObject);
     }
 
     @Override

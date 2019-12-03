@@ -57,4 +57,7 @@ public class ${ClassName} extends ${Entity}
 
 #end
 #end
+    /** 创建者所在部门id */
+    @TableField(fill = FieldFill.INSERT)
+    private Long deptId;
 }
