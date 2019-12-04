@@ -121,6 +121,7 @@ public class SysImgServiceImpl extends BaseServiceImpl<SysImgMapper, SysImg> imp
 
         wrapper.like(StrUtil.isNotBlank(sysImg.getImgName()), "img_name", SqlUtil.dealSpecialCharUseLike(sysImg.getImgName()));
         wrapper.eq(StrUtil.isNotBlank(sysImg.getIsDisplay()), "is_display", sysImg.getIsDisplay());
+        wrapper.orderByAsc("img_order");
         //数据过滤
         Object scope = sysImg.getParams().get("dataScope");
         if (ObjectUtil.isNotNull(scope)) {

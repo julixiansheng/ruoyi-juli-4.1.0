@@ -1,16 +1,20 @@
 package com.ruoyi.web.controller.system;
 
-import java.util.List;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.ruoyi.common.config.Global;
+import com.ruoyi.common.core.controller.BaseController;
+import com.ruoyi.framework.util.ShiroUtils;
+import com.ruoyi.system.domain.SysImg;
+import com.ruoyi.system.domain.SysMenu;
+import com.ruoyi.system.domain.SysUser;
+import com.ruoyi.system.service.ISysImgService;
+import com.ruoyi.system.service.ISysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.ruoyi.common.config.Global;
-import com.ruoyi.common.core.controller.BaseController;
-import com.ruoyi.framework.util.ShiroUtils;
-import com.ruoyi.system.domain.SysMenu;
-import com.ruoyi.system.domain.SysUser;
-import com.ruoyi.system.service.ISysMenuService;
+
+import java.util.List;
 
 /**
  * 首页 业务处理
@@ -22,6 +26,9 @@ public class SysIndexController extends BaseController
 {
     @Autowired
     private ISysMenuService menuService;
+
+    @Autowired
+    private ISysImgService sysImgService;
 
     // 系统首页
     @GetMapping("/index")
@@ -49,6 +56,11 @@ public class SysIndexController extends BaseController
     @GetMapping("/system/main")
     public String main(ModelMap mmap)
     {
+        List<SysImg> imgList = sysImgService.list(new QueryWrapper<SysImg>()
+                .eq("is_display", "Y")
+                .orderByAsc("img_order")
+        );
+        mmap.put("imgList", imgList);
         mmap.put("version", Global.getVersion());
         return "main";
     }

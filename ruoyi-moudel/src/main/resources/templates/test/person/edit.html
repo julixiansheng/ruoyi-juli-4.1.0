@@ -53,6 +53,22 @@
     <script type="text/javascript">
         var prefix = ctx + "test/person";
         $("#form-person-edit").validate({
+            rules: {
+                name: {
+                    maxlength: 12
+                },
+                age: {
+                    digits: true,
+                    maxlength: 3,
+                    range: [1, 130]
+                },
+                job: {
+                    maxlength: 16
+                },
+                jobDate: {
+                    date: true
+                }
+            },
             focusCleanup: true
         });
 

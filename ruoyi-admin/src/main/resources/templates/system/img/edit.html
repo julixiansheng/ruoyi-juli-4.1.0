@@ -8,6 +8,7 @@
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
     <form class="form-horizontal m" id="form-img-edit" th:object="${sysImg}">
         <input name="id" th:field="*{id}" type="hidden">
+        <input name="fileId" th:value="*{fileId}" type="hidden">
         <input id="fileSize" th:value="${sysFile.fileSize}" type="hidden">
         <div class="form-group">
             <label class="col-sm-3 control-label">图片上传：</label>
@@ -39,13 +40,25 @@
 <th:block th:include="include :: bootstrap-fileinput-js"/>
 <script type="text/javascript">
     var prefix = ctx + "system/img";
-    var imgName = '[[${sysImg.imgName}]]';
-    var imgUrl = '[[${sysImg.imgUrl}]]';
+
     $("#form-img-edit").validate({
+        rules:{
+            imgOrder:{
+                digits:true,
+                maxlength:3
+            }
+        },
         focusCleanup: true
     });
 
     $(function () {
+
+        var imgName = '[[${sysImg.imgName}]]';
+        var imgUrl = '[[${sysImg.imgUrl}]]';
+
+        console.log(imgName);
+        console.log(imgUrl);
+
         $("#file").fileinput({
             browseLabel: '选择要上传的图片',
             // uploadUrl: prefix + "/add",
@@ -59,7 +72,7 @@
             autoReplace: true,
             initialPreviewAsData: true,
             initialPreview: [
-                '/system/file/download/' + $("#fileId").val()
+                imgUrl
             ],
             initialPreviewConfig: [
                 {
