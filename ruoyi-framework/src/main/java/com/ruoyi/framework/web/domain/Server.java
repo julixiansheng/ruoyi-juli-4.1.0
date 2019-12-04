@@ -6,11 +6,8 @@ import java.util.List;
 import java.util.Properties;
 import com.ruoyi.common.utils.Arith;
 import com.ruoyi.common.utils.IpUtils;
-import com.ruoyi.framework.web.domain.server.Cpu;
-import com.ruoyi.framework.web.domain.server.Jvm;
-import com.ruoyi.framework.web.domain.server.Mem;
-import com.ruoyi.framework.web.domain.server.Sys;
-import com.ruoyi.framework.web.domain.server.SysFile;
+import com.ruoyi.framework.web.domain.server.*;
+import com.ruoyi.framework.web.domain.server.SysFileInfo;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.CentralProcessor.TickType;
@@ -54,7 +51,7 @@ public class Server
     /**
      * 磁盘相关信息
      */
-    private List<SysFile> sysFiles = new LinkedList<SysFile>();
+    private List<SysFileInfo> sysFileInfos = new LinkedList<SysFileInfo>();
 
     public Cpu getCpu()
     {
@@ -96,14 +93,14 @@ public class Server
         this.sys = sys;
     }
 
-    public List<SysFile> getSysFiles()
+    public List<SysFileInfo> getSysFileInfos()
     {
-        return sysFiles;
+        return sysFileInfos;
     }
 
-    public void setSysFiles(List<SysFile> sysFiles)
+    public void setSysFileInfos(List<SysFileInfo> sysFileInfos)
     {
-        this.sysFiles = sysFiles;
+        this.sysFileInfos = sysFileInfos;
     }
 
     public void copyTo() throws Exception
@@ -196,15 +193,15 @@ public class Server
             long free = fs.getUsableSpace();
             long total = fs.getTotalSpace();
             long used = total - free;
-            SysFile sysFile = new SysFile();
-            sysFile.setDirName(fs.getMount());
-            sysFile.setSysTypeName(fs.getType());
-            sysFile.setTypeName(fs.getName());
-            sysFile.setTotal(convertFileSize(total));
-            sysFile.setFree(convertFileSize(free));
-            sysFile.setUsed(convertFileSize(used));
-            sysFile.setUsage(Arith.mul(Arith.div(used, total, 4), 100));
-            sysFiles.add(sysFile);
+            SysFileInfo sysFileInfo = new SysFileInfo();
+            sysFileInfo.setDirName(fs.getMount());
+            sysFileInfo.setSysTypeName(fs.getType());
+            sysFileInfo.setTypeName(fs.getName());
+            sysFileInfo.setTotal(convertFileSize(total));
+            sysFileInfo.setFree(convertFileSize(free));
+            sysFileInfo.setUsed(convertFileSize(used));
+            sysFileInfo.setUsage(Arith.mul(Arith.div(used, total, 4), 100));
+            sysFileInfos.add(sysFileInfo);
         }
     }
 

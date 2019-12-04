@@ -31,6 +31,7 @@
 		<poi.version>3.17</poi.version>
 		<velocity.version>1.7</velocity.version>
 		<mybatis.plus.version>3.2.0</mybatis.plus.version>
+		<jackrabbit.version>2.18.4</jackrabbit.version>
 	</properties>
 	
     <!-- 依赖声明 -->

@@ -1,13 +1,8 @@
 package com.ruoyi.common.utils.file;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
+import java.io.*;
+import java.net.URLEncoder;
 
 /**
  * 文件处理工具类
@@ -131,12 +126,13 @@ public class FileUtils
         {
             // google浏览器
             filename = URLEncoder.encode(filename, "utf-8");
+            filename = filename.replace("+", " ");
         }
         else
         {
             // 其它浏览器
             filename = URLEncoder.encode(filename, "utf-8");
         }
-        return filename;
+        return "\"" + filename + "\"";
     }
 }

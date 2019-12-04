@@ -50,7 +50,7 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
     @Override
     public TableDataInfo getPersonList(Person person, Page page) {
         IPage iPage = baseMapper.selectPage(page, getWrapper(person));
-        return getDataTable(page);
+        return getDataTable(iPage);
     }
 
     /**

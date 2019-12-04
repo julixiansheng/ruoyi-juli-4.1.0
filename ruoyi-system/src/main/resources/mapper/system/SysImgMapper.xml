@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysImgMapper">
+    
+    <resultMap type="SysImg" id="SysImgResult">
+        <result property="id"    column="id"    />
+        <result property="imgName"    column="img_name"    />
+        <result property="imgUrl"    column="img_url"    />
+        <result property="imgOrder"    column="img_order"    />
+        <result property="isDisplay"    column="is_display"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="deleted"    column="deleted"    />
+        <result property="deptId"    column="dept_id"    />
+    </resultMap>
+
+    <sql id="selectSysImgVo">
+        select id, img_name, img_url, img_order, is_display, create_by, create_time, update_by, update_time, deleted, dept_id from sys_img
+    </sql>
+    
+</mapper>

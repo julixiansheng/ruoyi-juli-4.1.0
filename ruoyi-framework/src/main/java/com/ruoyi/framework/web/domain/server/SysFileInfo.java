@@ -5,7 +5,7 @@ package com.ruoyi.framework.web.domain.server;
  * 
  * @author yuanxy
  */
-public class SysFile
+public class SysFileInfo
 {
     /**
      * 盘符路径

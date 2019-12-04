@@ -9,7 +9,6 @@ import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.core.service.impl.BaseServiceImpl;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.sql.SqlUtil;
-import com.ruoyi.framework.aspectj.DataScopeAspect;
 
 import java.util.Arrays;
 import java.util.List;
@@ -71,7 +70,7 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
     public TableDataInfo get${ClassName}List(${ClassName} ${className}, Page page)
     {
         IPage iPage = baseMapper.selectPage(page, getWrapper(${className}));
-        return getDataTable(page);
+        return getDataTable(iPage);
     }
 
     /**
@@ -191,7 +190,7 @@ public class ${ClassName}ServiceImpl extends BaseServiceImpl<${ClassName}Mapper,
 #end
 #end
         //数据过滤
-        Object scope = ${className}.getParams().get(DataScopeAspect.DATA_SCOPE);
+        Object scope = ${className}.getParams().get("dataScope");
         if(ObjectUtil.isNotNull(scope)){
             wrapper.apply(scope.toString());
         }

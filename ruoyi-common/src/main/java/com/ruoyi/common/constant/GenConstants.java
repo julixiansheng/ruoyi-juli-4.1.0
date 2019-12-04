@@ -45,10 +45,10 @@ public class GenConstants
             "update_time", "remark" };
 
     /** Entity基类字段 */
-    public static final String[] BASE_ENTITY = { "createBy", "createTime", "updateBy", "updateTime", "remark", "deleted" };
+    public static final String[] BASE_ENTITY = { "createBy", "createTime", "updateBy", "updateTime", "remark", "deleted", "deptId" };
 
     /** Tree基类字段 */
-    public static final String[] TREE_ENTITY = { "parentName", "parentId", "orderNum", "ancestors" };
+    public static final String[] TREE_ENTITY = { "parentName", "parentId", "orderNum", "ancestors" , "deptId"};
 
     /** 文本框 */
     public static final String HTML_INPUT = "input";
