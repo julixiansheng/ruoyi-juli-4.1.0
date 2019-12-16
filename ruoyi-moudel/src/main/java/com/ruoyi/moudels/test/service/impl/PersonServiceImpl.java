@@ -13,6 +13,8 @@ import com.ruoyi.framework.aspectj.DataScopeAspect;
 import com.ruoyi.moudels.test.domain.Person;
 import com.ruoyi.moudels.test.mapper.PersonMapper;
 import com.ruoyi.moudels.test.service.IPersonService;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -46,9 +48,11 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
      * @param page   分页
      * @return 人员
      */
+    @Cacheable(value = "test", key = "#person.toString() + #page.current + #page.size + #page.orders")
     @DataScope
     @Override
     public TableDataInfo getPersonList(Person person, Page page) {
+        System.out.println("查询了一下");
         IPage iPage = baseMapper.selectPage(page, getWrapper(person));
         return getDataTable(iPage);
     }
@@ -71,6 +75,7 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
      * @param person 人员
      * @return 结果
      */
+    @CacheEvict(value = "test", allEntries = true)
     @Override
     public int insertPerson(Person person) {
         return baseMapper.insert(person);
@@ -82,6 +87,7 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
      * @param person 人员
      * @return 结果
      */
+    @CacheEvict(value = "test", allEntries = true)
     @Override
     public int updatePerson(Person person) {
         return baseMapper.updateById(person);
@@ -93,6 +99,7 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
      * @param ids 需要删除的数据ID
      * @return 结果
      */
+    @CacheEvict(value = "test", allEntries = true)
     @Override
     public int deletePersonByIds(String[] ids) {
         return baseMapper.deleteBatchIds(Arrays.asList(ids));
@@ -109,10 +116,10 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
 
         QueryWrapper<Person> wrapper = new QueryWrapper<>();
 
-        wrapper.like(StrUtil.isNotBlank(person.getName()), "name" , SqlUtil.dealSpecialCharUseLike(person.getName()));
-        wrapper.eq(ObjectUtil.isNotNull(person.getAge()), "age" , person.getAge());
-        wrapper.eq(ObjectUtil.isNotNull(person.getSex()), "sex" , person.getSex());
-        wrapper.eq(ObjectUtil.isNotNull(person.getJob()), "job" , person.getJob());
+        wrapper.like(StrUtil.isNotBlank(person.getName()), "name", SqlUtil.dealSpecialCharUseLike(person.getName()));
+        wrapper.eq(ObjectUtil.isNotNull(person.getAge()), "age", person.getAge());
+        wrapper.eq(ObjectUtil.isNotNull(person.getSex()), "sex", person.getSex());
+        wrapper.eq(ObjectUtil.isNotNull(person.getJob()), "job", person.getJob());
 
         String beginJobDate = (String) person.getParams().get("beginJobDate");
         String endJobDate = (String) person.getParams().get("endJobDate");

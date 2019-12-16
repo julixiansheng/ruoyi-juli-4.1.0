@@ -72,7 +72,9 @@ spring:
     restart:
       # 热部署开关
       enabled: true
-
+  cache:
+    ehcache:
+      config: classpath:ehcache/ehcache-common.xml
 # MyBatis Plus
 mybatis-plus:
   # 搜索指定包别名
