@@ -1,14 +1,13 @@
 package com.ruoyi.common.core.domain;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * Entity基类
@@ -18,10 +17,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class BaseEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
-
-    /** 逻辑删除 0 未删除 1 已删除*/
-    @TableLogic
-    private Integer deleted;
 
     /** 搜索值 */
     @TableField(exist = false)
