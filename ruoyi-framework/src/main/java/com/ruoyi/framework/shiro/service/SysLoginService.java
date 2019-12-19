@@ -24,7 +24,7 @@ import com.ruoyi.system.service.ISysUserService;
 /**
  * 登录校验方法
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Component
 public class SysLoginService

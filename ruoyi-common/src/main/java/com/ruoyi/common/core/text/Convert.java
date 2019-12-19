@@ -11,7 +11,7 @@ import com.ruoyi.common.utils.StringUtils;
 /**
  * 类型转换器
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class Convert
 {

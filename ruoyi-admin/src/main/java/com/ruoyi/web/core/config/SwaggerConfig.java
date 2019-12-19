@@ -1,9 +1,9 @@
 package com.ruoyi.web.core.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import com.ruoyi.common.config.Global;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -16,12 +16,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * Swagger2的接口配置
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig
 {
+
     /**
      * 创建API
      */

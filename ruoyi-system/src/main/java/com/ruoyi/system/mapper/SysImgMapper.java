@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 轮播图片Mapper接口
  * 
- * @author yuanxy
+ * @author julisir
  * @date 2019-12-03
  */
 public interface SysImgMapper extends BaseMapper<SysImg>

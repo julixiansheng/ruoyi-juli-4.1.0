@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 /**
  * JackRabbit配置
  *
- * @author yuanxy
+ * @author julisir
  * @date 2019/12/3 16:18
  **/
 @Component

@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 首页 业务处理
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 public class SysIndexController extends BaseController

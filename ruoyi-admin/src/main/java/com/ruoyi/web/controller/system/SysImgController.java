@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * 轮播图片Controller
  *
- * @author yuanxy
+ * @author julisir
  * @date 2019-12-03
  */
 @Controller

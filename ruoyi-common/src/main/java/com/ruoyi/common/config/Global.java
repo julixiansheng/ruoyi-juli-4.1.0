@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 /**
  * 全局配置类
  *
- * @author yuanxy
+ * @author julisir
  */
 @Component
 @ConfigurationProperties(prefix = "ruoyi")

@@ -6,7 +6,7 @@ import com.ruoyi.system.domain.SysUser;
 /**
  * 用户表 数据层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface SysUserMapper
 {

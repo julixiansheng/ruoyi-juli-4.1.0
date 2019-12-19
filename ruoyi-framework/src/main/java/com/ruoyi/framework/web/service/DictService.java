@@ -9,7 +9,7 @@ import com.ruoyi.system.service.ISysDictDataService;
 /**
  * RuoYi首创 html调用 thymeleaf 实现字典读取
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Service("dict")
 public class DictService

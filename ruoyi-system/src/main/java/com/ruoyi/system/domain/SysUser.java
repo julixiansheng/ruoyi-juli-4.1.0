@@ -14,7 +14,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 /**
  * 用户对象 sys_user
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class SysUser extends BaseEntity
 {

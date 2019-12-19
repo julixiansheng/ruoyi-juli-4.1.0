@@ -11,7 +11,7 @@ import com.ruoyi.system.service.ISysOperLogService;
 /**
  * 操作日志 服务层处理
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Service
 public class SysOperLogServiceImpl implements ISysOperLogService

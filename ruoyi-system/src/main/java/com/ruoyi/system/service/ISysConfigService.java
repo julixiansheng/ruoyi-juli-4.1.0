@@ -6,7 +6,7 @@ import com.ruoyi.system.domain.SysConfig;
 /**
  * 参数配置 服务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface ISysConfigService
 {

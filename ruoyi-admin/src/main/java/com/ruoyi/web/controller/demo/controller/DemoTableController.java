@@ -21,7 +21,7 @@ import com.ruoyi.common.utils.StringUtils;
 /**
  * 表格相关
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 @RequestMapping("/demo/table")

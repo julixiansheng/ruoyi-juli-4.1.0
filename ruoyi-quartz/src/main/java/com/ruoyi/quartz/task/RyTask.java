@@ -17,7 +17,7 @@ import java.util.Properties;
 /**
  * 定时任务调度
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Slf4j
 @Component("ryTask")

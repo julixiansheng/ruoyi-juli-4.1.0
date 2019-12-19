@@ -11,7 +11,7 @@ import com.ruoyi.framework.web.domain.Server;
 /**
  * 服务器监控
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 @RequestMapping("/monitor/server")

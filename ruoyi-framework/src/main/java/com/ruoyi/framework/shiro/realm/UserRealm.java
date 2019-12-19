@@ -34,7 +34,7 @@ import com.ruoyi.system.service.ISysRoleService;
 /**
  * 自定义Realm 处理登录 权限
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class UserRealm extends AuthorizingRealm
 {

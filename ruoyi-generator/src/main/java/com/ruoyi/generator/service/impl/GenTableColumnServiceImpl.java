@@ -11,7 +11,7 @@ import com.ruoyi.generator.service.IGenTableColumnService;
 /**
  * 业务字段 服务层实现
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Service
 public class GenTableColumnServiceImpl implements IGenTableColumnService

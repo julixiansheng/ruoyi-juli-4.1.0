@@ -26,7 +26,7 @@ import com.ruoyi.web.controller.demo.domain.UserOperateModel;
 /**
  * 操作控制
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 @RequestMapping("/demo/operate")

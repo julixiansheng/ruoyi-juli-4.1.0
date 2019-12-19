@@ -7,7 +7,7 @@ import com.ruoyi.system.domain.SysUserOnline;
 /**
  * 在线用户 服务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface ISysUserOnlineService
 {

@@ -6,7 +6,7 @@ import com.ruoyi.generator.domain.GenTableColumn;
 /**
  * 业务字段 服务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface IGenTableColumnService
 {

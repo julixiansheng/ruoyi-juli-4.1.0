@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * 人员对象 tb_person
  * 
- * @author ruoyi
+ * @author julisir
  * @date 2019-11-26
  */
 @Data

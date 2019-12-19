@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 轮播图片Service接口
  * 
- * @author yuanxy
+ * @author julisir
  * @date 2019-12-03
  */
 public interface ISysImgService extends BaseService<SysImg>

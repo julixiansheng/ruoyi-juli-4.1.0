@@ -3,7 +3,7 @@ package com.ruoyi.common.exception.user;
 /**
  * 用户账号已被删除
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class UserDeleteException extends UserException
 {

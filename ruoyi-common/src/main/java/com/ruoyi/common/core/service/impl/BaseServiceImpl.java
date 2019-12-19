@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * 基础服务类，所有Service都要继承
  *
- * @author yuanxy
+ * @author julisir
  * @date 2019年11月25日15:04:59
  */
 public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> implements BaseService<T> {

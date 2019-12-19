@@ -11,7 +11,7 @@ import com.ruoyi.system.domain.SysUser;
 /**
  * 菜单 业务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface ISysMenuService
 {

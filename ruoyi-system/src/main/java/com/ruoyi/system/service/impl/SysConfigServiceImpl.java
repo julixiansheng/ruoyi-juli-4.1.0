@@ -13,7 +13,7 @@ import com.ruoyi.system.service.ISysConfigService;
 /**
  * 参数配置 服务层实现
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Service
 public class SysConfigServiceImpl implements ISysConfigService

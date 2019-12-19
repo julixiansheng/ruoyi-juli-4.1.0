@@ -25,7 +25,7 @@ import com.ruoyi.quartz.service.ISysJobService;
 /**
  * 调度任务信息操作处理
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 @RequestMapping("/monitor/job")

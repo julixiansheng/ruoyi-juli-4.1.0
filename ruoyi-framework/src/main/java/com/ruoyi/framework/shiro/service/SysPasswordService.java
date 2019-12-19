@@ -20,7 +20,7 @@ import com.ruoyi.system.domain.SysUser;
 /**
  * 登录密码方法
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Component
 public class SysPasswordService

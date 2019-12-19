@@ -10,7 +10,7 @@ import java.util.Collection;
 /**
  * 基础服务接口，所有Service接口都要继承
  *
- * @author yuanxy
+ * @author julisir
  * @date 2019-11-25 15:01:30
  */
 public interface BaseService<T> extends IService<T> {

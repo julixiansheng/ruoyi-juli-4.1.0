@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 文件Service接口
  * 
- * @author yuanxy
+ * @author julisir
  * @date 2019-12-03
  */
 public interface ISysFileService extends BaseService<SysFile>

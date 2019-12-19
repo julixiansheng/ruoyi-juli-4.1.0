@@ -7,7 +7,7 @@ import com.ruoyi.generator.domain.GenTable;
 /**
  * 业务 服务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface IGenTableService
 {

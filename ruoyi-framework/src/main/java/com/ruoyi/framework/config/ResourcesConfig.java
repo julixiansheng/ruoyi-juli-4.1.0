@@ -22,7 +22,7 @@ import java.math.BigInteger;
 /**
  * 通用配置
  *
- * @author yuanxy
+ * @author julisir
  */
 @Configuration
 public class ResourcesConfig implements WebMvcConfigurer {

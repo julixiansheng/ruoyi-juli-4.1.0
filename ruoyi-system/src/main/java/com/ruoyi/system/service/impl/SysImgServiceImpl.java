@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 /**
  * 轮播图片Service业务层处理
  *
- * @author yuanxy
+ * @author julisir
  * @date 2019-12-03
  */
 @Service

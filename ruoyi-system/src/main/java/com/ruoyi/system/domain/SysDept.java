@@ -8,7 +8,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
 /**
  * 部门表 sys_dept
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class SysDept extends BaseEntity
 {

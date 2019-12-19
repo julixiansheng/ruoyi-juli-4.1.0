@@ -10,7 +10,7 @@ import com.ruoyi.common.utils.http.HttpUtils;
 /**
  * 获取地址类
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class AddressUtils
 {

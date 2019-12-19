@@ -12,7 +12,7 @@ import lombok.ToString;
 /**
  * 文件对象 sys_file
  * 
- * @author yuanxy
+ * @author julisir
  * @date 2019-12-03
  */
 @Data

@@ -7,7 +7,7 @@ import com.ruoyi.common.core.text.StrFormatter;
 /**
  * 字符串工具类
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils
 {

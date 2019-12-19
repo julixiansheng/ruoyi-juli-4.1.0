@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * web层通用数据处理
  *
- * @author yuanxy
+ * @author julisir
  */
 public class BaseController {
     protected final Logger logger = LoggerFactory.getLogger(BaseController.class);

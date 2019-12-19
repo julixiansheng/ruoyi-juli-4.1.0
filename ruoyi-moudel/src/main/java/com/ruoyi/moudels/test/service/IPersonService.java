@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 人员Service接口
  * 
- * @author ruoyi
+ * @author julisir
  * @date 2019-11-26
  */
 public interface IPersonService extends BaseService<Person>

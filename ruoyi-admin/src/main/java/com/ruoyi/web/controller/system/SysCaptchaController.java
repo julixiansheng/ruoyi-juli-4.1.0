@@ -19,7 +19,7 @@ import com.ruoyi.common.core.controller.BaseController;
 /**
  * 图片验证码（支持算术形式）
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 @RequestMapping("/captcha")

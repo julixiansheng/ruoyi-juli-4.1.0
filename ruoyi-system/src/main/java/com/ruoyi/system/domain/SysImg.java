@@ -12,7 +12,7 @@ import lombok.ToString;
 /**
  * 轮播图片对象 sys_img
  * 
- * @author yuanxy
+ * @author julisir
  * @date 2019-12-03
  */
 @Data

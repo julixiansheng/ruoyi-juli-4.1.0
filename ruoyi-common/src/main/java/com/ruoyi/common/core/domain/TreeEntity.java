@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 /**
  * Tree基类
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class TreeEntity extends BaseEntity
 {

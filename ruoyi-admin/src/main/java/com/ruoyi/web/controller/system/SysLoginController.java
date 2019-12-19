@@ -18,7 +18,7 @@ import com.ruoyi.common.utils.StringUtils;
 /**
  * 登录验证
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 public class SysLoginController extends BaseController

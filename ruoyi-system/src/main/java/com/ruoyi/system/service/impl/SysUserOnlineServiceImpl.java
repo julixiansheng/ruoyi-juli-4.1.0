@@ -13,7 +13,7 @@ import com.ruoyi.system.service.ISysUserOnlineService;
 /**
  * 在线用户 服务层处理
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Service
 public class SysUserOnlineServiceImpl implements ISysUserOnlineService

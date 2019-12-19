@@ -11,7 +11,7 @@ import com.ruoyi.quartz.service.ISysJobLogService;
 /**
  * 定时任务调度日志信息 服务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Service
 public class SysJobLogServiceImpl implements ISysJobLogService

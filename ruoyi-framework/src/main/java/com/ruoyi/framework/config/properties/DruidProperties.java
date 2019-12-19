@@ -7,7 +7,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 /**
  * druid 配置属性
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Configuration
 public class DruidProperties

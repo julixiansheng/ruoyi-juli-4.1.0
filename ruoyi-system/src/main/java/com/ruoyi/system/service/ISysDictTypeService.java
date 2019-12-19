@@ -7,7 +7,7 @@ import com.ruoyi.system.domain.SysDictType;
 /**
  * 字典 业务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface ISysDictTypeService
 {

@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching;
 /**
  * 启动程序
  * 
- * @author yuanxy
+ * @author julisir
  */
 @EnableCaching
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })

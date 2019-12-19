@@ -11,7 +11,7 @@ import com.ruoyi.common.enums.OperatorType;
 /**
  * 自定义操作日志记录注解
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Target({ ElementType.PARAMETER, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)

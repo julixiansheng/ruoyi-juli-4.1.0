@@ -9,7 +9,7 @@ import com.ruoyi.common.core.controller.BaseController;
 /**
  * druid 监控
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 @RequestMapping("/monitor/data")

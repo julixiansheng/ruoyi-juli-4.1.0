@@ -6,7 +6,7 @@ import com.ruoyi.system.domain.SysUser;
 /**
  * 用户 业务层
  * 
- * @author yuanxy
+ * @author julisir
  */
 public interface ISysUserService
 {

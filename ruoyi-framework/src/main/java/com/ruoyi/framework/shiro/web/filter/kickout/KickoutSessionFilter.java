@@ -26,7 +26,7 @@ import com.ruoyi.system.domain.SysUser;
 /**
  * 登录帐号控制过滤器
  * 
- * @author yuanxy
+ * @author julisir
  */
 public class KickoutSessionFilter extends AccessControlFilter
 {

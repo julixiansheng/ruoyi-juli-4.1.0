@@ -9,7 +9,7 @@ import com.ruoyi.common.core.controller.BaseController;
 /**
  * swagger 接口
  * 
- * @author yuanxy
+ * @author julisir
  */
 @Controller
 @RequestMapping("/tool/swagger")
