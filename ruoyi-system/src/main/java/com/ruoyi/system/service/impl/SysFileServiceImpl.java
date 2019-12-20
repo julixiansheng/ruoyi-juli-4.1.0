@@ -19,7 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.jcr.*;
+import javax.jcr.Node;
+import javax.jcr.PathNotFoundException;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
 import java.io.InputStream;
 import java.util.List;
 
@@ -198,10 +201,12 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
             log.warn("文件不存在，文件Id:" + fileId);
         } catch (RepositoryException e) {
             log.error("获取文件异常，文件Id:" + fileId, e);
+        } finally {
+            //退出session
+            session.logout();
         }
         return is;
     }
-
 
     /**
      * 根据实体获得 Wrapper
@@ -222,6 +227,5 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
 
         return wrapper;
     }
-
 
 }

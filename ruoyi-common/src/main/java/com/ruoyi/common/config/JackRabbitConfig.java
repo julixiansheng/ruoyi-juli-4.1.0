@@ -24,12 +24,15 @@ public class JackRabbitConfig {
      * RMI地址
      */
     @Value(value = "${ruoyi.jackrabbitRmi}")
-    private String RMI;
+    private String rmi;
 
     /**
      * 仓库
      */
     private static Repository repository = null;
+
+    public JackRabbitConfig() {
+    }
 
     /**
      * 初始化仓库
@@ -39,10 +42,10 @@ public class JackRabbitConfig {
     public Repository init() {
         if (null == repository) {
             try {
-                repository = new URLRemoteRepository(RMI);
-                logger.info("----------------------JackRabbit 仓库初始化成功----------------------");
+                repository = new URLRemoteRepository(rmi);
+                logger.info("----------------------JackRabbit 仓库连接成功----------------------");
             } catch (MalformedURLException e) {
-                logger.error("----------------------JackRabbit 仓库初始化失败----------------------", e);
+                logger.error("----------------------JackRabbit 仓库连接失败----------------------", e);
             }
         }
         return repository;
@@ -59,6 +62,7 @@ public class JackRabbitConfig {
             session = init().login(new SimpleCredentials("admin", "admin".toCharArray()));
         } catch (RepositoryException e) {
             logger.error("----------------------JackRabbit 获取session失败----------------------", e);
+            return null;
         }
         return session;
     }
