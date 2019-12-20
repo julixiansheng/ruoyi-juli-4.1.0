@@ -7,12 +7,15 @@ import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.poi.ExcelUtil;
+import com.ruoyi.common.validator.group.DefaultGroup;
+import com.ruoyi.common.validator.group.UpdateGroup;
 import com.ruoyi.moudels.test.domain.Person;
 import com.ruoyi.moudels.test.service.IPersonService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -80,7 +83,7 @@ public class PersonController extends BaseController
     @Log(title = "人员", businessType = BusinessType.INSERT)
     @PostMapping("/add")
     @ResponseBody
-    public AjaxResult addSave(Person person)
+    public AjaxResult addSave(@Validated({DefaultGroup.class}) Person person)
     {
         return toAjax(personService.insertPerson(person));
     }
@@ -103,7 +106,7 @@ public class PersonController extends BaseController
     @Log(title = "人员", businessType = BusinessType.UPDATE)
     @PostMapping("/edit")
     @ResponseBody
-    public AjaxResult editSave(Person person)
+    public AjaxResult editSave(@Validated({DefaultGroup.class, UpdateGroup.class}) Person person)
     {
         return toAjax(personService.updatePerson(person));
     }
