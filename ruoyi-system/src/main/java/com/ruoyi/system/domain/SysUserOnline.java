@@ -1,10 +1,12 @@
 package com.ruoyi.system.domain;
 
-import java.util.Date;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ruoyi.common.core.domain.BaseEntity;
 import com.ruoyi.common.enums.OnlineStatus;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.util.Date;
 
 /**
  * 当前在线会话 sys_user_online
@@ -37,9 +39,11 @@ public class SysUserOnline extends BaseEntity
     private String os;
 
     /** session创建时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startTimestamp;
 
     /** session最后访问时间 */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastAccessTime;
 
     /** 超时时间，单位为分钟 */
