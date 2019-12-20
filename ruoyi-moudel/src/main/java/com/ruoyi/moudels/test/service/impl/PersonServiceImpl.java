@@ -13,6 +13,7 @@ import com.ruoyi.framework.aspectj.DataScopeAspect;
 import com.ruoyi.moudels.test.domain.Person;
 import com.ruoyi.moudels.test.mapper.PersonMapper;
 import com.ruoyi.moudels.test.service.IPersonService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ import java.util.List;
  * @author julisir
  * @date 2019-11-26
  */
+@Slf4j
 @Service
 public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> implements IPersonService {
 
@@ -52,7 +54,7 @@ public class PersonServiceImpl extends BaseServiceImpl<PersonMapper, Person> imp
     @DataScope
     @Override
     public TableDataInfo getPersonList(Person person, Page page) {
-        System.out.println("查询了一下");
+        log.info("进行了一次查询.....");
         IPage iPage = baseMapper.selectPage(page, getWrapper(person));
         return getDataTable(iPage);
     }

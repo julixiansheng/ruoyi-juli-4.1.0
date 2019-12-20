@@ -24,6 +24,7 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -94,13 +95,16 @@ public class ShiroConfig
     @Value("${shiro.user.unauthorizedUrl}")
     private String unauthorizedUrl;
 
+    @Autowired
+    private net.sf.ehcache.CacheManager cacheManager;
+
     /**
      * 缓存管理器 使用Ehcache实现
      */
     @Bean
     public EhCacheManager getEhCacheManager()
     {
-        net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("ruoyi");
+//        net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("juli");
         EhCacheManager em = new EhCacheManager();
         if (StringUtils.isNull(cacheManager))
         {
@@ -119,7 +123,7 @@ public class ShiroConfig
      */
     protected InputStream getCacheManagerConfigFileInputStream()
     {
-        String configFile = "classpath:ehcache/ehcache-shiro.xml";
+        String configFile = "classpath:ehcache/ehcache.xml";
         InputStream inputStream = null;
         try
         {

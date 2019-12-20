@@ -1,6 +1,7 @@
 package com.ruoyi.moudels.test.controller;
 
 import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.annotation.RepeatSubmit;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
 import com.ruoyi.common.core.page.TableDataInfo;
@@ -74,6 +75,7 @@ public class PersonController extends BaseController
     /**
      * 新增保存人员
      */
+    @RepeatSubmit
     @RequiresPermissions("test:person:add")
     @Log(title = "人员", businessType = BusinessType.INSERT)
     @PostMapping("/add")

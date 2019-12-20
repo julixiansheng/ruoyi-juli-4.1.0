@@ -74,7 +74,7 @@ spring:
       enabled: true
   cache:
     ehcache:
-      config: classpath:ehcache/ehcache-common.xml
+      config: classpath:ehcache/ehcache.xml
 # MyBatis Plus
 mybatis-plus:
   # 搜索指定包别名

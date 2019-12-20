@@ -1,23 +1,26 @@
-package ${basePackage}.web.controller.${moduleName};
-
-import java.util.List;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-import com.ruoyi.common.annotation.Log;
-import com.ruoyi.common.enums.BusinessType;
-import ${packageName}.domain.${ClassName};
-import ${packageName}.service.I${ClassName}Service;
+package ${basePackage}import com.ruoyi.common.annotation.Log;
+import com.ruoyi.common.annotation.RepeatSubmit;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
-import com.ruoyi.common.utils.poi.ExcelUtil;
-#if($table.crud)
-import com.ruoyi.common.core.page.TableDataInfo;
-#elseif($table.tree)
-import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.core.domain.Ztree;
+import com.ruoyi.common.core.page.TableDataInfo;
+import com.ruoyi.common.enums.BusinessType;
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.common.utils.poi.ExcelUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+        .web.controller.${moduleName};
+${packageName}
+        .domain.${ClassName};
+${packageName}
+        .service.I${ClassName}Service;
+        #if($table.crud)
+        #elseif($table.tree)
 #end
 
 /**
@@ -107,6 +110,7 @@ public class ${ClassName}Controller extends BaseController
     /**
      * 新增保存${functionName}
      */
+    @RepeatSubmit
     @RequiresPermissions("${permissionPrefix}:add")
     @Log(title = "${functionName}", businessType = BusinessType.INSERT)
     @PostMapping("/add")
