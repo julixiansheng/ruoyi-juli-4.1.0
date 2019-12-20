@@ -105,7 +105,7 @@ mybatis-plus:
       select-strategy: not_empty
       insert-strategy: not_empty
       update-strategy: not_empty
-    #mybatis plus log打印
+    #mybatis plus logo打印
     banner: true
 
 # PageHelper分页插件
