@@ -54,7 +54,9 @@ public class DataScopeAspect {
      */
     public static final String DATA_SCOPE = "dataScope";
 
-    // 配置织入点
+    /**
+     * 配置织入点
+     */
     @Pointcut("@annotation(com.ruoyi.common.annotation.DataScope)")
     public void dataScopePointCut() {
     }
@@ -98,32 +100,34 @@ public class DataScopeAspect {
         for (SysRole role : user.getRoles()) {
 
             String dataScope = role.getDataScope();
+            //全部数据权限
             if (DATA_SCOPE_ALL.equals(dataScope)) {
 
                 sqlString = new StringBuilder();
                 break;
             } else if (DATA_SCOPE_CUSTOM.equals(dataScope)) {
-
+                //自定义数据权限
                 if (deptAliasNotBlank) {
-
+                    //部门别名存在，使用mybatis xml sql
                     sqlString.append(StringUtils.format(
                             " OR {}.dept_id IN ( SELECT dept_id FROM sys_role_dept WHERE role_id = {} ) ", deptAlias,
                             role.getRoleId()));
                 } else {
+                    //部门别名不存在，使用mybatis-plus拼接sql
                     sqlString.append(StringUtils.format(
                             " OR dept_id IN ( SELECT dept_id FROM sys_role_dept WHERE role_id = {} ) ",
                             role.getRoleId()));
                 }
 
             } else if (DATA_SCOPE_DEPT.equals(dataScope)) {
-
+                //部门数据权限
                 if (deptAliasNotBlank) {
                     sqlString.append(StringUtils.format(" OR {}.dept_id = {} ", deptAlias, user.getDeptId()));
                 } else {
                     sqlString.append(StringUtils.format(" OR dept_id = {} ", user.getDeptId()));
                 }
             } else if (DATA_SCOPE_DEPT_AND_CHILD.equals(dataScope)) {
-
+                //部门及以下数据权限
                 if (deptAliasNotBlank) {
                     sqlString.append(StringUtils.format(
                             " OR {}.dept_id IN ( SELECT dept_id FROM sys_dept WHERE dept_id = {} or find_in_set( {} , ancestors ) )",
@@ -134,10 +138,12 @@ public class DataScopeAspect {
                             user.getDeptId(), user.getDeptId()));
                 }
             } else if (DATA_SCOPE_SELF.equals(dataScope)) {
-
+                //仅本人数据权限
                 if (userAliasNotBlank) {
+                    //用户表别名存在，使用mybatis xml sql方式
                     sqlString.append(StringUtils.format(" OR {}.user_id = {} ", userAlias, user.getUserId()));
                 } else {
+                    //用户表别名不存在，mybatis-plus拼接sql方式
                     sqlString.append(StringUtils.format(" OR create_by = {} ", user.getUserId()));
                 }
             }
