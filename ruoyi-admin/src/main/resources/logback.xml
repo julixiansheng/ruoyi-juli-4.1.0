@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- 日志存放路径 -->
-	<property name="log.path" value="D:/Codding/ruoyi/logs" />
+<!--	<property name="log.path" value="D:/Codding/ruoyi/logs" />-->
+	<property name="log.path" value="/usr/local/ruoyi/logs" />
     <!-- 彩色日志 -->
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr"

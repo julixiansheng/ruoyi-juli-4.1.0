@@ -3,6 +3,7 @@ package com.ruoyi.common.core.controller;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -12,6 +13,7 @@ import com.ruoyi.common.core.domain.AjaxResult.Type;
 import com.ruoyi.common.core.page.PageDomain;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.core.page.TableSupport;
+import com.ruoyi.common.core.text.Convert;
 import com.ruoyi.common.utils.DateUtils;
 import com.ruoyi.common.utils.ServletUtils;
 import com.ruoyi.common.utils.StringUtils;
@@ -70,11 +72,12 @@ public class BaseController {
      * @return 分页page
      */
     protected Page getPage() {
-        String isAsc = ServletUtils.getParameter(Constants.IS_ASC);
-        String orderByColumn = ServletUtils.getParameter(Constants.ORDER_BY_COLUMN);
+        String isAsc = getParameter(Constants.IS_ASC);
+        //前台传来的order key不是驼峰命名，这里需要转换一下
+        String orderByColumn = StringUtils.toUnderScoreCase(getParameter(Constants.ORDER_BY_COLUMN));
 
-        Integer pageNum = ServletUtils.getParameterToInt(Constants.PAGE_NUM);
-        Integer pageSize = ServletUtils.getParameterToInt(Constants.PAGE_SIZE);
+        Integer pageNum = getParameterToInt(Constants.PAGE_NUM);
+        Integer pageSize = getParameterToInt(Constants.PAGE_SIZE);
 
         Page page = new Page();
 
@@ -84,10 +87,10 @@ public class BaseController {
         }
 
         if( "asc".equals(isAsc) && StrUtil.isNotBlank(orderByColumn)){
-            page.setAsc(orderByColumn);
+            page.addOrder(OrderItem.asc(SqlUtil.escapeOrderBySql(orderByColumn)));
         }
         if( "desc".equals(isAsc) && StrUtil.isNotBlank(orderByColumn)){
-            page.setDesc(orderByColumn);
+            page.addOrder(OrderItem.desc(SqlUtil.escapeOrderBySql(orderByColumn)));
         }
         return page;
     }
@@ -111,6 +114,86 @@ public class BaseController {
      */
     public HttpSession getSession() {
         return getRequest().getSession();
+    }
+
+    /**
+     * 获取参数
+     *
+     * @param name
+     * @return
+     */
+    public String getParameter(String name){
+        return getRequest().getParameter(name);
+    }
+
+    /**
+     * 获取参数 type:Integer
+     *
+     * @param name
+     * @return
+     */
+    public Integer getParameterToInt(String name){
+        return Convert.toInt(getParameter(name));
+    }
+
+    /**
+     * 获取参数 type:Long
+     *
+     * @param name
+     * @return
+     */
+    public Long getParameterToLong(String name){
+        return Convert.toLong(getParameter(name));
+    }
+
+    /**
+     * 获取参数 type:Double
+     *
+     * @param name
+     * @return
+     */
+    public Double getParameterToDouble(String name){
+        return Convert.toDouble(getParameter(name));
+    }
+
+    /**
+     * 获取参数 type:Byte
+     *
+     * @param name
+     * @return
+     */
+    public Byte getParameterToByte(String name){
+        return Convert.toByte(getParameter(name));
+    }
+
+    /**
+     * 获取参数 type:Boolean
+     *
+     * @param name
+     * @return
+     */
+    public Boolean getParameterToBoolean(String name){
+        return Convert.toBool(getParameter(name));
+    }
+
+    /**
+     * 获取参数 type:Character
+     *
+     * @param name
+     * @return
+     */
+    public Character getParameterToChar(String name){
+        return Convert.toChar(getParameter(name));
+    }
+
+    /**
+     * 获取参数 type:Date
+     *
+     * @param name
+     * @return
+     */
+    public Date getParameterToDate(String name){
+        return DateUtils.parseDate(getParameter(name));
     }
 
     /**

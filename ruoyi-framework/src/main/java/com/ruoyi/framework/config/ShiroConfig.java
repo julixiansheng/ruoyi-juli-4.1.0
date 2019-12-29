@@ -1,7 +1,6 @@
 package com.ruoyi.framework.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.spring.SpringUtils;
 import com.ruoyi.framework.shiro.realm.UserRealm;
 import com.ruoyi.framework.shiro.session.OnlineSessionDAO;
@@ -29,6 +28,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import javax.servlet.Filter;
 import java.io.ByteArrayInputStream;
@@ -101,12 +101,15 @@ public class ShiroConfig
     /**
      * 缓存管理器 使用Ehcache实现
      */
+    @Lazy
     @Bean
     public EhCacheManager getEhCacheManager()
     {
 //        net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("juli");
         EhCacheManager em = new EhCacheManager();
-        if (StringUtils.isNull(cacheManager))
+        em.setCacheManager(cacheManager);
+        return em;
+   /*     if (StringUtils.isNull(cacheManager))
         {
             em.setCacheManager(new net.sf.ehcache.CacheManager(getCacheManagerConfigFileInputStream()));
             return em;
@@ -115,7 +118,7 @@ public class ShiroConfig
         {
             em.setCacheManager(cacheManager);
             return em;
-        }
+        }*/
     }
 
     /**

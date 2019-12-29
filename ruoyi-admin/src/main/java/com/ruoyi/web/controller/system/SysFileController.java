@@ -84,9 +84,7 @@ public class SysFileController extends BaseController {
 
         SysFile sysFile = sysFileService.getSysFileById(fileId);
 
-        InputStream is = sysFileService.getFileById(fileId);
-
-        try {
+        try(InputStream is = sysFileService.getFileById(fileId)){
 
             response.setCharacterEncoding("utf-8");
             response.setContentType(sysFile.getMimeType());
@@ -98,7 +96,6 @@ public class SysFileController extends BaseController {
             is.read(bytes);
             outputStream.write(bytes);
 
-            is.close();
             outputStream.close();
         } catch (Exception e) {
             logger.error("下载文件失败", e);
